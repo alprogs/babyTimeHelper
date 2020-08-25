@@ -1,0 +1,63 @@
+{
+    "result": true,
+    "data": {
+        "status": "CHANGED",
+        "activities": {
+            "feeding": {
+                "_id": "5f4347950d3573fc9a2527ba",
+                "type": "weaning",
+                "option": {
+                    "amount": 100,
+                    "amount_std": 100,
+                    "duration": 0,
+                    "unit": "ml",
+                    "weaning_name": ""
+                },
+                "started_at": 1598242355.674,
+                "ended_at": 1598242355.674,
+                "updated_at": 1598246299.041
+            },
+            "diaper": {
+                "_id": "5ea66e6d0faf6127ac1f95a2",
+                "type": "diaper",
+                "option": {
+                    "diaper_type": "poo",
+                    "poo_color": "D29335"
+                },
+                "started_at": 1587953548.965,
+                "ended_at": 1587953548.965,
+                "updated_at": 1587965558.386
+            },
+            "sleep": {
+                "_id": "5dabb51f3bd31d626c6a74f2",
+                "type": "sleep",
+                "started_at": 1571534110.203,
+                "option": {
+                    "sleep_type": "day",
+                    "target_date": "2019-10-20T00:00:00+09:00",
+                    "duration": 0
+                },
+                "updated_at": 1571534110.203,
+                "ended_at": 1571534110.203
+            },
+            "pumping": {
+                "_id": "5d9fa2c218f7bd3517174336",
+                "started_at": 1570742977.333,
+                "type": "pumping",
+                "updated_at": 1570742995.394,
+                "ended_at": 1570743457.333,
+                "option": {
+                    "unit": "ml",
+                    "duration": 480,
+                    "right_duration": 240,
+                    "left_duration": 240,
+                    "amount_std": 60,
+                    "direction": "B",
+                    "amount": 60
+                }
+            }
+        }
+    },
+    "timestamp": 1598246300.755,
+    "guest": false
+}
