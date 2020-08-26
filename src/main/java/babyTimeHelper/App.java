@@ -20,6 +20,8 @@ import okhttp3.Response;
 
 public class App {
 
+	private static boolean PRINT_TOOL_FORMAT = true;
+
 	private static Map<String, String> typeTransMap 	= null;
 	private static Date today 	= null;
 	
@@ -40,11 +42,11 @@ public class App {
 		String activity_list_data	= reqActivityList();
 		String activity_recent_data	= reqActivityRecent();
 		
-		JsonElement listActivities 	= parseActivitiesData( activity_list_data );
-		calcTodayActivities( listActivities.getAsJsonArray() );
-
 		JsonElement recentActivities 	= parseActivitiesData( activity_recent_data );
 		calcLastFeedingTime( recentActivities.getAsJsonObject() );
+
+		JsonElement listActivities 	= parseActivitiesData( activity_list_data );
+		calcTodayActivities( listActivities.getAsJsonArray() );
 	}
 
 	public String reqActivityListNew() {
@@ -111,8 +113,12 @@ public class App {
 
 		long timeDiff 		= today.getTime() - activityTime.getTime();
 
-		log(String.format("LAST FEEDING       : %s %s ml", typeTransMap.get( feedingType ), feedingAmount));
-		log(String.format("TIME DIFF          : %s", formatDuration( timeDiff )));
+		if (PRINT_TOOL_FORMAT == false) {
+			log(String.format("TIME DIFF          : %s", formatDuration( timeDiff )));
+			log(String.format("LAST FEEDING       : %s %s ml", typeTransMap.get( feedingType ), feedingAmount));
+		} else {
+			System.out.print(String.format("%s,%s %s ml", formatDuration( timeDiff ), typeTransMap.get( feedingType ), feedingAmount));
+		}
 	}
 
 	private static String formatDuration(long duration) {
@@ -152,7 +158,11 @@ public class App {
 
 		totalFeeding 	= totalDriedMilk + totalWeaning;
 		
-		log("TOTAL FEEDING      : "+ totalFeeding +"( "+ totalDriedMilk +" + "+ totalWeaning +" )");
+		if (PRINT_TOOL_FORMAT == false) {
+			log("TOTAL FEEDING      : "+ totalFeeding +" ml ( "+ totalDriedMilk +" + "+ totalWeaning +" )");
+		} else {
+			System.out.println(String.format(",%s ml (%s + %s)", totalFeeding, totalDriedMilk, totalWeaning));
+		}
 	}
 
 	private JsonElement parseActivitiesData( String responseMessage ) {
