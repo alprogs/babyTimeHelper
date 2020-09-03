@@ -161,7 +161,8 @@ public class App {
 		if (PRINT_TOOL_FORMAT == false) {
 			log("TOTAL FEEDING      : "+ totalFeeding +" ml ( "+ totalDriedMilk +" + "+ totalWeaning +" )");
 		} else {
-			System.out.println(String.format(",%s ml (%s + %s)", totalFeeding, totalDriedMilk, totalWeaning));
+			//System.out.println(String.format(",%s ml (%s + %s)", totalFeeding, totalDriedMilk, totalWeaning));
+			System.out.println(String.format(",%s,%s,%s", totalFeeding, totalDriedMilk, totalWeaning));
 		}
 	}
 

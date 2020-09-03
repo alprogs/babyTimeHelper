@@ -16,3 +16,4 @@ tags
 # Ignore etc files
 doIt.sh
 
+.settings
