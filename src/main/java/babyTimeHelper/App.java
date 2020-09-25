@@ -41,7 +41,7 @@ public class App {
 		
 		String activity_list_data	= reqActivityList();
 		String activity_recent_data	= reqActivityRecent();
-		
+
 		JsonElement recentActivities 	= parseActivitiesData( activity_recent_data );
 		calcLastFeedingTime( recentActivities.getAsJsonObject() );
 
@@ -49,46 +49,6 @@ public class App {
 		calcTodayActivities( listActivities.getAsJsonArray() );
 	}
 
-	public String reqActivityListNew() {
-		String messageBody 	= "{\"baby_oid\":\"5d457a1b3bd31d2e176dec0b\",\"size\":50,\"start_align\":true,\"tz\":\"Asia\\/Seoul\"}";
-		String activity_list_url = "https://babytime.simfler.com/v1/activity/list";
-
-		String responseBody 	= "NOT ASSIGNED";
-
-		try {
-			OkHttpClient client = new OkHttpClient().newBuilder().build();
-
-			MediaType mediaType = MediaType.parse("text/plain");
-
-			RequestBody body = RequestBody.create(mediaType, messageBody);
-
-			Request request = new Request.Builder()
-				.url( activity_list_url )
-				.method("POST", body)
-				.addHeader("User-Agent", "Android SM-N960N")
-				.addHeader("bt-pf", "android")
-				.addHeader("bt-pf-ver", "10")
-				.addHeader("bt-app-ver", "308")
-				.addHeader("bt-udid", "6288347c-6c87-4fa0-b261-552cf302db9f")
-				.addHeader("bt-lang", "ko_KR")
-				.addHeader("Host", "babytime.simfler.com")
-				.addHeader("Connection", "Keep-Alive")
-				.addHeader("Accept-Encoding", "gzip")
-				.addHeader("Content-Length", "113")
-				.addHeader("Cookie", "token=\"2|1:0|10:1598182894|5:token|168:eyJfaWQiOiAiNWQ0NTc5YzMxYTlkNzg1MWE0OWQyMDc4IiwgInAiOiAiNTAxM2JlYWU5MzkyZmE3NWNiMGFmNjJmZTk5ZjliZDUxMjA3ODZmNDQ4NTZkMjE2MmE2ZmJkNDIiLCAiZSI6IDI1NDQyNjI4OTQuMDg3NTkxfQ==|de19413ed422859c069891123ab864b871ef6109d4aefc2b853f0f601e153e0b\"; token=\"2|1:0|10:1598358552|5:token|168:eyJfaWQiOiAiNWQ0NTc5YzMxYTlkNzg1MWE0OWQyMDc4IiwgInAiOiAiNTAxM2JlYWU5MzkyZmE3NWNiMGFmNjJmZTk5ZjliZDUxMjA3ODZmNDQ4NTZkMjE2MmE2ZmJkNDIiLCAiZSI6IDI1NDQ0Mzg1NTIuNzM2NTgyOH0=|7b3568cf0e031bc43babd8d6ccbf8b92ee589e2e1862839c88699a55c6a3bd47\"")
-				.addHeader("Content-Type", "text/plain")
-				.build();
-
-			Response response 	= client.newCall(request).execute();
-			responseBody 		= response.body().string();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return responseBody;
-	}
-	
 	public String reqActivityList() {
 		String messageBody 	= "{\"baby_oid\":\"5d457a1b3bd31d2e176dec0b\",\"size\":50,\"start_align\":true,\"tz\":\"Asia\\/Seoul\"}";
 		return sendHttpRequest( "https://babytime.simfler.com/v1/activity/list", messageBody );
@@ -246,14 +206,14 @@ public class App {
 				.addHeader("User-Agent", "Android SM-N960N")
 				.addHeader("bt-pf", "android")
 				.addHeader("bt-pf-ver", "10")
-				.addHeader("bt-app-ver", "308")
+				.addHeader("bt-app-ver", "310")
 				.addHeader("bt-udid", "6288347c-6c87-4fa0-b261-552cf302db9f")
 				.addHeader("bt-lang", "ko_KR")
 				.addHeader("Host", "babytime.simfler.com")
 				.addHeader("Connection", "Keep-Alive")
 				.addHeader("Accept-Encoding", "gzip")
 				.addHeader("Content-Length", "113")
-				.addHeader("Cookie", "token=\"2|1:0|10:1598182894|5:token|168:eyJfaWQiOiAiNWQ0NTc5YzMxYTlkNzg1MWE0OWQyMDc4IiwgInAiOiAiNTAxM2JlYWU5MzkyZmE3NWNiMGFmNjJmZTk5ZjliZDUxMjA3ODZmNDQ4NTZkMjE2MmE2ZmJkNDIiLCAiZSI6IDI1NDQyNjI4OTQuMDg3NTkxfQ==|de19413ed422859c069891123ab864b871ef6109d4aefc2b853f0f601e153e0b\"; token=\"2|1:0|10:1598358552|5:token|168:eyJfaWQiOiAiNWQ0NTc5YzMxYTlkNzg1MWE0OWQyMDc4IiwgInAiOiAiNTAxM2JlYWU5MzkyZmE3NWNiMGFmNjJmZTk5ZjliZDUxMjA3ODZmNDQ4NTZkMjE2MmE2ZmJkNDIiLCAiZSI6IDI1NDQ0Mzg1NTIuNzM2NTgyOH0=|7b3568cf0e031bc43babd8d6ccbf8b92ee589e2e1862839c88699a55c6a3bd47\"")
+				.addHeader("Cookie", "token=\"2|1:0|10:1601008336|5:token|168:eyJfaWQiOiAiNWQ0NTc5YzMxYTlkNzg1MWE0OWQyMDc4IiwgInAiOiAiNTAxM2JlYWU5MzkyZmE3NWNiMGFmNjJmZTk5ZjliZDUxMjA3ODZmNDQ4NTZkMjE2MmE2ZmJkNDIiLCAiZSI6IDI1NDcwODgzMzYuMTA0NTYyfQ==|84d59581fa45e894c91541462e597445bf2f3d9d089990d9cf48d83c9a5c2d0f\"")
 				.addHeader("Content-Type", "text/plain")
 				.build();
 
